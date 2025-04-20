@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cw2-node-app  
+spec:
+  replicas: 3  
+  selector:
+    matchLabels:
+      app: cw2-node-app  # Match with labels in the template
+  template:
+    metadata:
+      labels:
+        app: cw2-node-app  
+    spec:
+      containers:
+      - name: cw2-node-app  
+        image: your-dockerhub-username/cw2-node-app:latest  # Docker image name
+        ports:
+        - containerPort: 8080  # Make sure this matches your app's port
